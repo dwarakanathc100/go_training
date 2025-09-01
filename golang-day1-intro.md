@@ -81,5 +81,4 @@ func main() {
 
 ---
 
-**Tip for Freshers:**  
-Go is designed to be beginner-friendly and productive. Ask questions, experiment, and don’t worry about mistakes—they’re the fastest way to learn!
+
