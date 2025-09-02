@@ -1,5 +1,5 @@
-# Day 2 — Git & GitHub Practicals (Step‑by‑Step)
 
+<<<<<<< HEAD
 **Goal:** By the end of this session you will create a GitHub account, set up Git on your computer, create a repository, make your first commit, and push it to GitHub.
 
 ---
@@ -228,3 +228,5 @@ func main() {
  Pull → Branch → Commit → Push → PR → Merge.
  
  
+=======
+>>>>>>> 1ac8044748a31af470112e7d203a4741dce284c0
