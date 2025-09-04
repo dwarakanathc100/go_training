@@ -3,7 +3,7 @@
 
 ## 1. Git SHA (Secure Hashing Algorithm)
 
-- **Definition**: Git uses SHA-1 (Secure Hashing Algorithm) to uniquely identify each commit.  
+   Git uses SHA-1 (Secure Hashing Algorithm) to uniquely identify each commit.  
 - Each commit generates a **40-character hash** that acts like a fingerprint.  
 - SHA is based on:
   - Commit message
