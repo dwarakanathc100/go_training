@@ -19,10 +19,10 @@
 **Example:**
 ```bash
 commit e3b0c44298fc1c149afbf4c8996fb92427ae41e4
-Author: John Doe <johndoe@example.com>
+Author: abc <abc@example.com>
 Date:   Mon Sep 3 10:00:00 2025 +0100
 
-    Added user authentication module
+   
 ```
 Here, `e3b0c44298fc1c149afbf4c8996fb92427ae41e4` is the commit SHA.
 
