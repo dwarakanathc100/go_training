@@ -1,5 +1,5 @@
 # Day 4 Notes
-
+`Note:` ***Review Day 3 notes for clarity*** 
 ## 1. Require at Least One Review Before Merging a Pull Request
 
 To enforce code quality and collaboration, you can configure GitHub to require at least one review approval before merging a PR.
