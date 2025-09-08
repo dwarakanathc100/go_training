@@ -82,9 +82,8 @@ Amazon can be explained with **microservices**. Each service has a single respon
 - **Tracking Service** → Provides shipment tracking updates.
 - **Notification Service** → Sends updates via email/SMS/app.
 
-```mermaid
 graph TD
-    A[Amazon] --> B[User service (DB)]
+    A[Amazon] --> B["User service (DB)"]
     A --> C[Search service]
     C --> D[Inventory service]
     D --> E[Order service]
@@ -92,7 +91,6 @@ graph TD
     E --> G[Shipping service]
     G --> H[Tracking service]
     E --> I[Notification service]
-```
 ---
 
 ## 7. Real-Time Tools for Development
