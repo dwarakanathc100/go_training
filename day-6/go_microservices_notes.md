@@ -92,6 +92,7 @@ graph TD
     E --> G[Shipping service]
     G --> H[Tracking service]
     E --> I[Notification service]
+```
 ---
 
 ## 7. Real-Time Tools for Development
