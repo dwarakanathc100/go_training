@@ -85,7 +85,7 @@ Amazon can be explained with **microservices**. Each service has a single respon
 ---
 
 
-### 6.1. Microservices Architecture
+### 6.1. Diagram
 
 Below is the microservices diagram:
 
