@@ -80,8 +80,16 @@ Amazon can be explained with **microservices**. Each service has a single respon
 - **Payment Service** → Handles transactions securely.
 - **Shipping Service** → Manages product delivery.
 - **Tracking Service** → Provides shipment tracking updates.
-- **Notification Service** → Sends updates via email/SMS/app.
+- **Notification Service** → Sends updates via email/SMS/app
 
+---
+
+
+### 6.1. Microservices Architecture
+
+Below is the microservices diagram:
+
+```mermaid
 graph TD
     A[Amazon] --> B["User service (DB)"]
     A --> C[Search service]
@@ -91,7 +99,12 @@ graph TD
     E --> G[Shipping service]
     G --> H[Tracking service]
     E --> I[Notification service]
+```
+
 ---
+
+
+
 
 ## 7. Real-Time Tools for Development
 To build and manage microservices effectively, developers use tools like:
