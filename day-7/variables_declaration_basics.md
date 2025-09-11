@@ -121,6 +121,7 @@ This is useful when a function returns multiple values and you only care about s
 
 ## 6. Rune Type
 A **rune** in Go is an alias for `int32` and represents a Unicode code point.
+Go uses **rune** to clearly distinguish between a number and a character.
 
 Example:
 ```go
