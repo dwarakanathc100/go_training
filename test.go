@@ -1,8 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"errors"
+	"fmt"
+	"os"
+)
 
-func main() {
+func main1() {
 	flotingPoint()
 	// stringOperations()
 
@@ -67,5 +72,65 @@ func flotingPoint() {
 		fmt.Printf("%b ", ch)
 
 	}
+
+}
+
+func divide(a, b float64) (float64, error) {
+	if b == 0 {
+		return 0, errors.New("division by zero")
+	}
+	return a / b, nil
+}
+
+func main() {
+	rune := "ellow"
+	fmt.Println(rune)
+	// fmt.Println("Command-line arguments:", os.Args)
+	file, err := os.Open("golang-day1-intro.md")
+	if err != nil {
+		fmt.Println("Error opening file:", err)
+		return
+	}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		fmt.Println(line)
+	}
+	// scanner := bufio.NewScanner(os.Stdin)
+	// fmt.Print("Enter your city: ")
+
+	// if scanner.Scan() {
+	// 	city := scanner.Text() // gets the input line
+	// 	fmt.Println("City:", city)
+	// }
+
+	// reader := bufio.NewReader(os.Stdin)
+	// fmt.Print("Enter your full name: ")
+	// name, err := reader.ReadString('\n') // reads until newline7
+	// if err != nil {
+	// 	fmt.Println("Error reading input:", err)
+	// 	return
+	// }
+
+	// name = strings.TrimSpace(name) // remove \n
+	// fmt.Println("Hello,", name)
+	// // var name string
+	// var age int
+
+	// fmt.Print("Enter your name and age: ")
+	// // fmt.Scan(&name, &age) // & because Go passes addresses to store input
+	// // fmt.Scanln(&name, &age) // stops at newline
+	// fmt.Scanf("%s %d", &name, &age) // formatted input
+
+	// fmt.Printf("Hello %s, you are %d years old\n", name, age)
+
+	// for i := 0; i < 10; i++ {
+	// 	fmt.Println(rand.Intn(99))
+	// }
+	// fmt.Println(n)
+	// r, err := divide(10, 0)
+	// fmt.Println(r)
+	// fmt.Println(err)
 
 }
