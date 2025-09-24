@@ -44,7 +44,7 @@ This means if someone tries to replace the library with a modified version, Go w
 
 ## 3. `go mod vendor`
 
-The `vendor/` directory contains **local copies of all dependencies** used in your project.
+The `vendor` directory contains **local copies of all dependencies** used in your project.
 
 Why is it useful?
 - Ensures builds work without internet access.
@@ -55,7 +55,7 @@ Command:
 ```bash
 go mod vendor
 ```
-This creates a `vendor/` folder that holds all the project dependencies.  
+This creates a `vendor` folder that holds all the project dependencies.  
 When building with the `-mod=vendor` flag, Go uses the dependencies in this folder instead of downloading them.
 
 ---
@@ -162,9 +162,9 @@ Here the consumer imports the module at a specific version (`v1.0.1`).
 If we uncomment the line for `v1.0.0`, the older version will be used.
 
 ---
-### Reference repos
-## https://github.com/dwarakanathc100/uuid-generator
-## https://github.com/dwarakanathc100/uuid-consumer
+## Reference repos
+### https://github.com/dwarakanathc100/uuid-generator
+### https://github.com/dwarakanathc100/uuid-consumer
 
 ## 7. Exercises 
 1. **Creating Your Own Module**
