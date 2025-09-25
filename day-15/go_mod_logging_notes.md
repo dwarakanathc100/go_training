@@ -186,6 +186,10 @@ func main() {
 }
 ```
 
+### output
+```
+{"level":"debug","msg":"New UUID generated!","time":"2025-09-24T23:01:54+01:00","uuid:":"31b436f7-2c2b-4494-bf86-22d32bc6d4ab"}
+```
 ------------------------------------------------------------------------
 
 ## 6. Environment-Specific Logging Example
