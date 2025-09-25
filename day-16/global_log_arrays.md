@@ -109,7 +109,7 @@ contiguous memory locations.
 -   Not flexible for dynamic data structures.
 -   Rarely used directly in Go (usually slices are preferred).
 
-# 2. Declaring Arrays in Go 
+# Declaring Arrays in Go 
 
 ### a) Specify Length and Values
 
