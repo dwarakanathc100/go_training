@@ -12,7 +12,7 @@ We discussed the following key topics:
 
 ---
 
-## 2. Struct Expansion in Go
+## 1. Struct Expansion in Go
 
 
 
@@ -56,7 +56,7 @@ Here, the `University` struct is expanded to include `Colleges`, each of which c
 
 ---
 
-## 3. JSON Formatting in Go
+## 2. JSON Formatting in Go
 
 ### Why JSON Format Is Useful
 
@@ -80,7 +80,7 @@ For example, if `Name` is an empty string, it won’t appear in the JSON.
 
 ---
 
-## 4. Struct Validation Using Go Validator
+## 3. Struct Validation Using Go Validator
 
 ### Why Validate Structs?
 
@@ -109,7 +109,7 @@ if err != nil {
 
 ---
 
-## 5. Example Program
+## 4. Example Program
 
 ```go
 func StructType() {
@@ -130,7 +130,7 @@ func StructType() {
 
 ---
 
-## 6. Exercises
+## 5. Exercises
 
 ### Exercise 1: Validate Required Fields
 - Add a validation rule to make **Student Name** required.
@@ -147,7 +147,7 @@ func StructType() {
 - Remove some field values and print JSON output. Check if omitted fields are excluded.
 
 
-## 8. Refer the below links for validator tags and json
+## 6. Refer the below links for validator tags and json
 
 - [Go Validator Package](https://pkg.go.dev/github.com/go-playground/validator/v10)
 - [Go JSON Encoding](https://pkg.go.dev/encoding/json)
