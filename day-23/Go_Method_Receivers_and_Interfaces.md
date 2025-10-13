@@ -1,7 +1,7 @@
 # Method Receivers and Interfaces in Go
 
 
-In Go, **method receivers** and **erfaces** are fundamental concepts that enable **object-oriented behaviour** such as **encapsulation**, **composition**, and **polymorphism** — without classical inheritance.
+In Go, **method receivers** and **interfaces** are fundamental concepts that enable **object-oriented behaviour** such as **encapsulation**, **composition**, and **polymorphism**  without classical inheritance.
 
 ---
 
@@ -93,7 +93,7 @@ type InterfaceName interface {
 
 ---
 
-## Real-time Use Case — Payment Gateway
+## Use Case  Payment Gateway
 Imagine a **payment system** where multiple gateways (PayPal, GPay, PhonePe) exist.  
 Each must provide the same functions: `Pay()` and `Refund()`.
 
@@ -165,18 +165,68 @@ Polymorphism allows different types to **respond to the same interface** in thei
 ## Composition in Go
 Go promotes **composition over inheritance**.  
 A struct can **embed** another struct or interface to reuse behaviour.
+We’ll see how Go allows one struct to “reuse” functionality of another by embedding it — i.e., composition.
+This is different from inheritance (which Go doesn’t have). Instead, Go promotes composition over inheritance
 
-```go
+## Real-World Scenario
+Imagine we are building a Payment Gateway System that processes payments via different methods — like Credit Card and PayPal.
+We also want to log every transaction.
+
+Rather than having every payment type implement its own Log() method separately,
+we can create a reusable Logger struct and embed it into multiple payment types.
+
+```package main
+
+import "fmt"
+
+// Logger struct — reusable component
 type Logger struct{}
-func (Logger) Log(message string) { fmt.Println("Log:", message) }
 
-type Service struct {
-    Logger
+func (Logger) Log(message string) {
+	fmt.Println("[LOG]:", message)
 }
 
-func (s Service) Start() {
-    s.Log("Service started...")
+// PaymentProcessor interface — defines behavior for payment processing
+type PaymentProcessor interface {
+	ProcessPayment(amount float64)
 }
+
+// CreditCardPayment struct embeds Logger — composition in action
+type CreditCardPayment struct {
+	Logger
+	CardNumber string
+}
+
+func (c CreditCardPayment) ProcessPayment(amount float64) {
+	c.Log(fmt.Sprintf("Processing Credit Card payment of $%.2f for card %s", amount, c.CardNumber))
+	fmt.Println("Credit Card Payment Successful!")
+}
+
+// PayPalPayment struct also embeds Logger
+type PayPalPayment struct {
+	Logger
+	Email string
+}
+
+func (p PayPalPayment) ProcessPayment(amount float64) {
+	p.Log(fmt.Sprintf("Processing PayPal payment of $%.2f for account %s", amount, p.Email))
+	fmt.Println("PayPal Payment Successful!")
+}
+
+// Function to simulate any type of payment
+func MakePayment(p PaymentProcessor, amount float64) {
+	p.ProcessPayment(amount)
+}
+
+func main() {
+	cc := CreditCardPayment{CardNumber: "1234-5678-9999-0000"}
+	pp := PayPalPayment{Email: "user@example.com"}
+
+	// Both types automatically have Log() due to composition
+	MakePayment(cc, 150.75)
+	MakePayment(pp, 89.50)
+}
+
 ```
 
 ---
@@ -304,7 +354,7 @@ A `ReadWriter` like a network connection can **both download and upload**.
 
 ## 4.  Empty Interface (`interface{}`) (`we will discuss in next class`)
 
-### Definition
+
 The **empty interface** does not have any methods.  
 Because it has **no requirements**, **every type** in Go satisfies it automatically.
 
@@ -333,7 +383,7 @@ Used in libraries like `fmt`, `json.Marshal`, and other generic utilities where 
 
 ## 5. Interface with Method Receivers
 
-### Definition
+
 This approach shows how **structs implement interfaces** by providing **methods with receivers** (either value or pointer).
 
 ### Example
@@ -367,11 +417,11 @@ Used when defining behaviours like `Run()`, `Execute()`, or `Perform()` in syste
 
 ## 6. Interface Variable Assignment
 
-### Definition
+
 You can **assign** a concrete type to an **interface variable** as long as the type implements all the interface’s methods.  
 Once assigned, you can call interface methods polymorphically.
 
-### Example (based on PaymentGateway)
+### Example
 ```go
 type PaymentGateway interface {
     Pay(amount float64) string
