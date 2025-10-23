@@ -251,6 +251,78 @@ func withdrawFromCrypto() error {
 
 ------------------------------------------------------------------------
 
+### Example
+
+``` go
+var ErrAtmOffline = errors.New("Currenlty ATM is offline")
+var TxnFailedError = errors.New("Transaction Failed, train again")
+
+// custom errors
+type InsufficientFundsError struct {
+	Balance  float64
+	Withdraw float64
+	Loc      string
+	ATMNo    string
+}
+
+func (e *InsufficientFundsError) Error() string {
+	return fmt.Sprintf("Insufficient funds %.2f but tried to withdraw %.2f in Location %s and ATMNo %s", e.Balance, e.Withdraw, e.Loc, e.ATMNo)
+}
+
+func withdrawFromCrypto() error {
+	return errors.ErrUnsupported
+}
+func withdraw(balance, amount float64, loc, atmno string, atmOnline bool) error {
+	var errs []error
+	if !atmOnline {
+		errs = append(errs, ErrAtmOffline)
+	} else if atmOnline {
+		errs = append(errs, TxnFailedError)
+	}
+
+	if amount > balance {
+		errs = append(errs, &InsufficientFundsError{Balance: balance, Withdraw: amount, Loc: loc, ATMNo: atmno})
+	}
+
+	// if amount > balance {
+	// 	return fmt.Errorf("withdrawl faild %w", &InsufficientFundsError{Balance: balance, Withdraw: amount, Loc: loc, ATMNo: atmno})
+	// }
+
+	if len(errs) == 0 {
+		fmt.Println("Withdraw successful !")
+		return nil
+	}
+	return errors.Join(errs...)
+}
+
+func TestErrUnsupported() {
+	err := withdrawFromCrypto()
+	if errors.Is(err, errors.ErrUnsupported) {
+		fmt.Println("Operation is not supported")
+	}
+}
+
+func TestCustomError() {
+	err := withdraw(1000, 2000, "New city", "ATM10001", false)
+	var fundsError *InsufficientFundsError
+
+	if errors.As(err, &fundsError) {
+		fmt.Printf("Custom error detected \n Balance  %.2f \n withdraw %.2f \n Location : %s \n", fundsError.Balance, fundsError.Withdraw, fundsError.Loc)
+	}
+
+	if errors.Is(err, ErrAtmOffline) {
+		//fallback
+		//withdraw()
+		fmt.Println("Please try again later - the ATM is offline")
+	} else if errors.Is(err, TxnFailedError) {
+		fmt.Println("error occured while processing your request:", err)
+		// } else {
+		// 	fmt.Println(err)
+		// }
+
+	}
+}
+```
 ##  Summary Table
 
   -----------------------------------------------------------------------------
