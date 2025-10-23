@@ -34,7 +34,7 @@ known error?"
 
 ------------------------------------------------------------------------
 
-### 💡 Example 
+###  Example 
 
 ``` go
 var ErrAtmOffline = errors.New("Currenlty ATM is offline")
